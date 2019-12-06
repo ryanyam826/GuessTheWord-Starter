@@ -43,6 +43,7 @@
 
         <TextView
             android:id="@+id/score_text"
+            android:text="@{@string/score_format(gameViewModel.score)}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -65,11 +66,21 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="32dp"
             android:text="@string/play_again"
+            android:onClick="@{() -> scoreViewModel.onPlayAgain()}"
             android:theme="@style/GoButton"
             android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
+        <data
+            app:layout_constraintBottom_toTopOf="@+id/you_scored_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <variable
+                name="scoreViewModel"
+                type="com.example.android.guesstheword.screens.score.ScoreViewModel" />
+        </data>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

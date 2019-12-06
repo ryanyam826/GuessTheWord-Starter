@@ -58,22 +58,19 @@ class GameFragment : Fragment() {
                 false
         )
         Log.i("GameFragment", "Called ViewModelProviders.of")
+
         viewModel = ViewModelProviders.of(this).get(GameViewModel::class.java)
-        viewModel.score.observe(this, Observer { newScore ->
-            binding.scoreText.text = newScore.toString()
-        })
-        viewModel.word.observe(this, Observer { newWord ->
-            binding.wordText.text = newWord
-        })
+
+
         viewModel.eventGameFinish.observe(this, Observer<Boolean> { hasFinished ->
             if (hasFinished) gameFinished()
         })
+
         resetList()
         nextWord()
 
-        binding.correctButton.setOnClickListener { onCorrect() }
-        binding.skipButton.setOnClickListener { onSkip() }
-        binding.endGameButton.setOnClickListener { onEndGame() }
+        binding.gameViewModel = viewModel
+        binding.lifecycleOwner = this
 
         return binding.root
 
@@ -111,21 +108,7 @@ class GameFragment : Fragment() {
 
     /** Methods for buttons presses **/
 
-    private fun onSkip() {
-        if (!wordList.isEmpty()) {
-            score--
-        }
-        viewModel.onSkip()
 
-    }
-
-    private fun onCorrect() {
-        if (!wordList.isEmpty()) {
-            score++
-        }
-        viewModel.onCorrect()
-
-    }
 
     /**
      * Moves to the next word in the list
@@ -141,9 +124,6 @@ class GameFragment : Fragment() {
     /** Methods for updating the UI **/
 
 
-    private fun onEndGame() {
-        gameFinished()
-    }
 
     private fun gameFinished() {
         Toast.makeText(activity, "Game has just finished", Toast.LENGTH_SHORT).show()

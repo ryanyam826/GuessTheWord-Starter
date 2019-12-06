@@ -18,6 +18,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="scoreViewModel"
+            type="com.example.android.guesstheword.screens.score.ScoreViewModel" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/score_layout"
         android:layout_width="match_parent"
@@ -28,7 +34,7 @@
             android:id="@+id/you_scored_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginBottom="16dp"
             android:fontFamily="sans-serif"
             android:text="@string/you_scored"
             android:textColor="@color/black_text_color"
@@ -36,7 +42,6 @@
             android:textStyle="normal"
             app:layout_constraintBottom_toTopOf="@+id/score_text"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="packed" />
@@ -73,14 +78,5 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <data
-            app:layout_constraintBottom_toTopOf="@+id/you_scored_text"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <variable
-                name="scoreViewModel"
-                type="com.example.android.guesstheword.screens.score.ScoreViewModel" />
-        </data>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

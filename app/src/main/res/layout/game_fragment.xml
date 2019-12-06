@@ -18,7 +18,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-
+    <data>
+        <variable
+            name="gameViewModel"
+            type="com.example.android.guesstheword.screens.game.GameViewModel" />
+    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/game_layout"
@@ -64,6 +68,7 @@
 
         <TextView
             android:id="@+id/timer_text"
+            android:text="@{gameViewModel.currentTimeString}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -139,15 +144,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/guideline" />
 
-        <data
-            app:layout_constraintBottom_toTopOf="@+id/word_is_text"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
 
-            <variable
-                name="gameViewModel"
-                type="com.example.android.guesstheword.screens.game.GameViewModel" />
-        </data>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>
